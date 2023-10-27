@@ -1,5 +1,20 @@
 from random import randint
 
+
+def comp_number():
+    """
+    Function return list of 6 numbers with range from 1 to 49
+    """
+    computer_numbers = []
+    while len(computer_numbers) < 6:
+        com_number = randint(1, 49)
+        if com_number in computer_numbers:
+            continue
+        else:
+            computer_numbers.append(com_number)
+    return computer_numbers
+
+
 #  user has to enter 6 numbers. Program include 4 validations:
 #  user can't use other value than number
 #  user can't use number bigger than 49 and smaller than 1
@@ -28,21 +43,15 @@ user_numbers.sort()
 print(f"Your numbers: {user_numbers}")
 
 #  computer choose 6 numbers with range 1 to 49
-computer_numbers = []
-while len(computer_numbers) < 6:
-    com_number = randint(1, 49)
-    if com_number in computer_numbers:
-        continue
-    else:
-        computer_numbers.append(com_number)
+computer_choose = comp_number()
 
-computer_numbers.sort()
-print(f"Computer number: {computer_numbers}")
+computer_choose.sort()
+print(f"Computer number: {computer_choose}")
 
 #  program compare user numbers and computer numbers and show how many numbers is same
 wins = 0
 for number in user_numbers:
-    if number in computer_numbers:
+    if number in computer_choose:
         wins += 1
 print(f"You choose {wins} number/s", end='')
 if wins >= 3 and wins <= 6:
